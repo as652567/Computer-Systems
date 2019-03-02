@@ -1,0 +1,19 @@
+Signals HW Example Output: 
+
+Running program to simulate a typical daemon process
+Main program sleeping for 10 seconds to simulate initialization of daemon process
+Parent PID = 4583
+Parent forking child process...
+Parent: going to sleep for 2 minutes
+Child process created with pid: 4584
+Child: process executing
+Child: going to sleep for 30 seconds...
+Child: process exiting
+Sending signal to parent process...Parent: getting exit status of child
+Parent: child pid upon return is 4584 and exit status is 53
+
+Question: When the parent sleeps for 2 minutes how long does it actually sleep and WHY? 
+The parent sleeps until interrupted by the signal, triggered by the end of the child process code execution
+
+BONUS: How to get the parent process to actually sleep for 2 minutes.
+Use sleep(120) prior to waitpid() call and do not send any signal to end the sleep() of parent process 
